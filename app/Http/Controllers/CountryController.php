@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\country;
-use App\Http\Requests\StorecountryRequest;
-use App\Http\Requests\UpdatecountryRequest;
+use App\Models\Country;
+use App\Http\Requests\Request;
 
 class countryController extends Controller
 {
@@ -13,9 +12,13 @@ class countryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Country $countries)
     {
-        //
+        // $countries = $countries->get(); //duomenu gavimas
+        
+        return view('countries.index', [
+            // 'countries' => $countries
+        ]);
     }
 
     /**
@@ -31,10 +34,10 @@ class countryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorecountryRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorecountryRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -64,11 +67,11 @@ class countryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatecountryRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecountryRequest $request, country $country)
+    public function update(Request $request, country $country)
     {
         //
     }

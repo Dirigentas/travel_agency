@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CountryController as C;
+use App\Http\Controllers\HotelController as H;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('/countries')->name('countries-')->group(function () {
+    Route::get('/index', [C::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
+    // Route::get('/index', [H::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
+    Route::get('/create', [C::class, 'create'])->name('create'); //->middleware('roles:Ad');
+    Route::post('/store', [C::class, 'store'])->name('store'); //->middleware('roles:Ad');    
+    Route::get('/edit/{client}', [C::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
+    Route::put('/update/{client}', [C::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
+    Route::delete('/destroy/{client}', [C::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
+});
+
 
 Auth::routes();
 

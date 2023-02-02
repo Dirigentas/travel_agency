@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo', 100)->nullable();
             $table->integer('trip-length')->unsigned();
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('counties');
+            $table->foreign('country_id')->references('id')->on('countries');
 
         });
     }

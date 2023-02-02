@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('counties', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('country', 30)->unique();
             $table->date('season-start');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('counties');
+        Schema::dropIfExists('countries');
     }
 };
