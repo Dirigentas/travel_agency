@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\County;
-use App\Http\Requests\StoreCountyRequest;
-use App\Http\Requests\UpdateCountyRequest;
+use App\Models\country;
+use App\Http\Requests\StorecountryRequest;
+use App\Http\Requests\UpdatecountryRequest;
 
-class CountyController extends Controller
+class countryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class CountyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCountyRequest  $request
+     * @param  \App\Http\Requests\StorecountryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCountyRequest $request)
+    public function store(StorecountryRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class CountyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(County $county)
+    public function show(country $country)
     {
         //
     }
@@ -53,10 +53,10 @@ class CountyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(County $county)
+    public function edit(country $country)
     {
         //
     }
@@ -64,11 +64,11 @@ class CountyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCountyRequest  $request
-     * @param  \App\Models\County  $county
+     * @param  \App\Http\Requests\UpdatecountryRequest  $request
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountyRequest $request, County $county)
+    public function update(UpdatecountryRequest $request, country $country)
     {
         //
     }
@@ -76,10 +76,10 @@ class CountyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(County $county)
+    public function destroy(country $country)
     {
         //
     }

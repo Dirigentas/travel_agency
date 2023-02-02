@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\County;
+use App\Models\country;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CountyPolicy
+class countryPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class CountyPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, County $county)
+    public function view(User $user, country $country)
     {
         //
     }
@@ -48,10 +48,10 @@ class CountyPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, County $county)
+    public function update(User $user, country $country)
     {
         //
     }
@@ -60,10 +60,10 @@ class CountyPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, County $county)
+    public function delete(User $user, country $country)
     {
         //
     }
@@ -72,10 +72,10 @@ class CountyPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, County $county)
+    public function restore(User $user, country $country)
     {
         //
     }
@@ -84,10 +84,10 @@ class CountyPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\County  $county
+     * @param  \App\Models\country  $country
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, County $county)
+    public function forceDelete(User $user, country $country)
     {
         //
     }
