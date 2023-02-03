@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+Use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $faker = Faker::create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('users')->insert([
+            'name' => 'Aras',
+            'email' => 'admin.@gmail.com',
+            'password' => Hash::make('123'),
+            'role' => 'administratorius'
+        ]);
+
+        foreach (range(0, 10) as $value) {
+        DB::table('countries')->insert([
+                'name' => $faker->countryCode ,
+                'season_start' => $faker->dateTimeBetween('-4 week', '+4 week'),
+                'season_end' => $faker->dateTimeBetween('+5 week', '+40 week'),
+            ]);
+        }
     }
 }

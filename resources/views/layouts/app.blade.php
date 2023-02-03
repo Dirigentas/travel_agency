@@ -23,32 +23,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class='logo rounded' src='{{asset('logo.jpg')}}' alt='logo'>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Šalys</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('countries-index') }}">Šalių sąrašas</a></li>
-                                <li><a class="dropdown-item" href="{{ route('countries-create') }}">Pridėti šalį</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Viešbučiai</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('hotels-index') }}">Viešbučių sąrašas</a></li>
-                                <li><a class="dropdown-item" href="{{ route('hotels-create') }}">Pridėti viešbutį</a></li>
-                            </ul>
-                        </li>
+
 
 
                         <!-- Authentication Links -->
@@ -64,7 +42,24 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
+
                         @else
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Šalys</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('countries-index') }}">Šalių sąrašas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('countries-create') }}">Pridėti šalį</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Viešbučiai</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('hotels-index') }}">Viešbučių sąrašas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('hotels-create') }}">Pridėti viešbutį</a></li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}

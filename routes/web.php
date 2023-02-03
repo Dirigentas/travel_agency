@@ -20,24 +20,24 @@ Route::get('/', function () {
 });
 
 Route::prefix('/countries')->name('countries-')->group(function () {
-    Route::get('/index', [C::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
-    Route::get('/create', [C::class, 'create'])->name('create'); //->middleware('roles:Ad');
-    Route::post('/store', [C::class, 'store'])->name('store'); //->middleware('roles:Ad');    
-    Route::get('/edit/{country}', [C::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
-    Route::put('/update/{country}', [C::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
-    Route::delete('/destroy/{country}', [C::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
+    Route::get('/index', [C::class, 'index'])->name('index')->middleware('roles:A');    
+    Route::get('/create', [C::class, 'create'])->name('create')->middleware('roles:A');
+    Route::post('/store', [C::class, 'store'])->name('store')->middleware('roles:A');    
+    Route::get('/edit/{country}', [C::class, 'edit'])->name('edit')->middleware('roles:A');
+    Route::put('/update/{country}', [C::class, 'update'])->name('update')->middleware('roles:A');    
+    Route::delete('/destroy/{country}', [C::class, 'destroy'])->name('destroy')->middleware('roles:A');    
 });
 
 Route::prefix('/hotels')->name('hotels-')->group(function () {
-    Route::get('/index', [H::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
-    Route::get('/create', [H::class, 'create'])->name('create'); //->middleware('roles:Ad');
-    Route::post('/store', [H::class, 'store'])->name('store'); //->middleware('roles:Ad');    
-    Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
-    Route::put('/update/{hotel}', [H::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
-    Route::delete('/destroy/{hotel}', [H::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
+    Route::get('/index', [H::class, 'index'])->name('index')->middleware('roles:A');    
+    Route::get('/create', [H::class, 'create'])->name('create')->middleware('roles:A');
+    Route::post('/store', [H::class, 'store'])->name('store')->middleware('roles:A');    
+    Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit')->middleware('roles:A');
+    Route::put('/update/{hotel}', [H::class, 'update'])->name('update')->middleware('roles:A');    
+    Route::delete('/destroy/{hotel}', [H::class, 'destroy'])->name('destroy')->middleware('roles:A');    
 });
 
 
-Auth::routes();
+Auth::routes(['register'=> false]); //['register'=> false] - panaikina registracijos lauka
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
