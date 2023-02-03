@@ -48,10 +48,28 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $hotel = new Hotel;
+
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
+            
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // Intervention library nauojimas paveiksleliu apkirpimui
+            // $manager = new ImageManager(['driver' => 'GD']);
+            // $image = $manager->make($photo);
+            // $image->crop(400, 600);
+            // $image->save(public_path().'/hotels/'.$file);
+
+            $photo->move(public_path().'/hotels', $file); // serveryje is TEMP dir perkeliama i normalia dir. Irasom i serveri su publick_path
+
+            $hotel->photo = '/hotels/'. $file; // issaugojimas i DB. O skaitom su Asset (kelias narsyklei)
+        }
+
         $hotel->name = $request->name;
         $hotel->price = $request->price;
         $hotel->trip_length = $request->trip_length;
-        $hotel->photo = $request->photo;
         $hotel->country = $request->country;
         $hotel->save();
 
@@ -94,10 +112,38 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
+        // 'Istrinti nuotrauka' mygtuko paspaudimas
+        if ($request->delete_photo) {
+            $hotel->deletePhoto();
+            return redirect()->back();
+        }
+
+        // vykdosi jei buvo uzkelta nauja nuotrauka
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // Intervention library nauojimas paveiksleliu apkirpimui
+            // $manager = new ImageManager(['driver' => 'GD']);
+            // $image = $manager->make($photo);
+            // $image->crop(400, 600);
+            // $image->save(public_path().'/drinks/'.$file);            
+            
+            // kadangi buvo uzkelta nauja nuotrauka, senaja reikia istrinti
+            if ($hotel->photo) {
+                $hotel->deletePhoto();
+            }
+            
+            $photo->move(public_path().'/hotels', $file);
+            $hotel->photo = '/hotels/'. $file; // issaugojimas i DB. O skaitom su Asset (kelias narsyklei)
+        }
+
         $hotel->name = $request->name;
         $hotel->price = $request->price;
         $hotel->trip_length = $request->trip_length;
-        $hotel->photo = $request->photo;
         $hotel->country = $request->country;
         $hotel->save();
 
@@ -112,7 +158,9 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
+        $hotel->deletePhoto();
         $hotel->delete();
+        
 
         return redirect()->back();
     }

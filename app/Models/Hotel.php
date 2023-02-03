@@ -11,4 +11,14 @@ class Hotel extends Model
 
     public $timestamps = false; // jei kuriame su 'new Laravel' ir istrinam migration timestamps, tai reikia sios eilutes
 
+    public function deletePhoto()
+    {
+        if($this->photo){
+            $fileName = $this->photo;
+            unlink(public_path().$fileName);
+            $this->photo = null;
+            $this->save();
+        }
+    }
+
 }

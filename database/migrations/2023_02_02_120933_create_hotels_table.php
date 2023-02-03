@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 30);
             $table->decimal('price')->unsigned();
-            $table->string('photo', 100)->nullable();
+            $table->string('photo', 150)->nullable();
             $table->integer('trip_length')->unsigned();
-            $table->string('country', 30)->unique();
+            $table->string('country', 30);
             $table->foreign('country')->references('name')->on('countries');
 
         });
