@@ -40,7 +40,7 @@ class countryController extends Controller
     public function store(Request $request)
     {
         $country = new Country;
-        $country->country = $request->country;
+        $country->name = $request->name;
         $country->season_start = $request->season_start;
         $country->season_end = $request->season_end;
         $country->save();
@@ -81,7 +81,7 @@ class countryController extends Controller
      */
     public function update(Request $request, country $country)
     {
-        $country->country = $request->country;
+        $country->name = $request->name;
         $country->season_start = $request->season_start;
         $country->season_end = $request->season_end;
         $country->save();

@@ -11,7 +11,7 @@
         </div>
         <form class="card-body" action='{{route('countries-update', $country)}}' method='post'>
             <label for="exampleInputEmail1" class="form-label">Pavadinimas</label>
-            <input class="form-control form-control-lg mb-4" type="text" name="country" value='{{$country->country}}'>
+            <input class="form-control form-control-lg mb-4" type="text" name="name" value='{{$country->name}}'>
             <label for="exampleInputEmail1" class="form-label">Sezono pradžios data</label>
             <input class="form-control form-control-lg mb-4" type="date" name="season_start" value='{{$country->season_start}}'>
             <label for="exampleInputEmail1" class="form-label">Sezono pabaigos data</label>

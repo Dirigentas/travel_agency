@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
-use App\Http\Requests\Request;
-
+use App\Models\Country;
+use Illuminate\Http\Request;
 class HotelController extends Controller
 {
     /**
@@ -12,9 +12,13 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Hotel $hotels)
     {
-        //
+        $hotels = $hotels->get(); //duomenu gavimas
+        
+        return view('back.hotels.index', [
+            'hotels' => $hotels
+        ]);
     }
 
     /**
@@ -24,7 +28,11 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all()->sortBy('country');
+        
+        return view('back.hotels.create', [
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -35,7 +43,15 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hotel = new Hotel;
+        $hotel->name = $request->name;
+        $hotel->price = $request->price;
+        $hotel->trip_length = $request->trip_length;
+        $hotel->photo = $request->photo;
+        $hotel->country = $request->country;
+        $hotel->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -57,7 +73,12 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        $countries = Country::all()->sortBy('country');
+
+        return view('back.hotels.edit', [
+            'hotel' => $hotel,
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -69,7 +90,14 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $hotel->name = $request->name;
+        $hotel->price = $request->price;
+        $hotel->trip_length = $request->trip_length;
+        $hotel->photo = $request->photo;
+        $hotel->country = $request->country;
+        $hotel->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +108,8 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+
+        return redirect()->back();
     }
 }

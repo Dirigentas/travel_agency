@@ -35,12 +35,21 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('countries-index') }}">Šalių sąrašas</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Šalys</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('countries-index') }}">Šalių sąrašas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('countries-create') }}">Pridėti šalį</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('countries-create') }}">Pridėti šalį</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Viešbučiai</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('hotels-index') }}">Viešbučių sąrašas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('hotels-create') }}">Pridėti viešbutį</a></li>
+                            </ul>
                         </li>
+
 
                         <!-- Authentication Links -->
                         @guest

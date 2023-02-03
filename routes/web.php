@@ -28,6 +28,15 @@ Route::prefix('/countries')->name('countries-')->group(function () {
     Route::delete('/destroy/{country}', [C::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
 });
 
+Route::prefix('/hotels')->name('hotels-')->group(function () {
+    Route::get('/index', [H::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
+    Route::get('/create', [H::class, 'create'])->name('create'); //->middleware('roles:Ad');
+    Route::post('/store', [H::class, 'store'])->name('store'); //->middleware('roles:Ad');    
+    Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
+    Route::put('/update/{hotel}', [H::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
+    Route::delete('/destroy/{hotel}', [H::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
+});
+
 
 Auth::routes();
 
