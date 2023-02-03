@@ -16,7 +16,7 @@ class countryController extends Controller
     {
         $countries = $countries->get(); //duomenu gavimas
         
-        return view('countries.index', [
+        return view('back.countries.index', [
             'countries' => $countries
         ]);
     }
@@ -28,7 +28,7 @@ class countryController extends Controller
      */
     public function create()
     {
-        return view('countries.create');
+        return view('back.countries.create');
     }
 
     /**
@@ -67,7 +67,9 @@ class countryController extends Controller
      */
     public function edit(country $country)
     {
-        //
+        return view('back.countries.edit', [
+            'country' => $country
+        ]);
     }
 
     /**
@@ -79,7 +81,12 @@ class countryController extends Controller
      */
     public function update(Request $request, country $country)
     {
-        //
+        $country->country = $request->country;
+        $country->season_start = $request->season_start;
+        $country->season_end = $request->season_end;
+        $country->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -90,6 +97,8 @@ class countryController extends Controller
      */
     public function destroy(country $country)
     {
-        
+        $country->delete();
+
+        return redirect()->back();
     }
 }

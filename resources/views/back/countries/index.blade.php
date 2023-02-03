@@ -18,8 +18,10 @@
                 <div class='col'>
                     <a href='{{route('countries-edit', $value)}}' class="btn btn-outline-primary">Redaguoti</a>
                 </div>
-                <form action='' method=' post' class='col'>
-                    <button type="button" class="btn btn-outline-danger">Ištrinti</button>
+                <form action='{{route('countries-destroy', $value)}}' method='post' class='col'>
+                    <button type="submit" class="btn btn-outline-danger">Ištrinti</button>
+                    @method('delete')
+                    @csrf
                 </form>
 
             </li>
