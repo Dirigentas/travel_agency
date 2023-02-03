@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 
 class countryController extends Controller
 {
@@ -14,10 +14,10 @@ class countryController extends Controller
      */
     public function index(Country $countries)
     {
-        // $countries = $countries->get(); //duomenu gavimas
+        $countries = $countries->get(); //duomenu gavimas
         
         return view('countries.index', [
-            // 'countries' => $countries
+            'countries' => $countries
         ]);
     }
 
@@ -28,7 +28,7 @@ class countryController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.create');
     }
 
     /**
@@ -39,7 +39,13 @@ class countryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $country = new Country;
+        $country->country = $request->country;
+        $country->season_start = $request->season_start;
+        $country->season_end = $request->season_end;
+        $country->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +90,6 @@ class countryController extends Controller
      */
     public function destroy(country $country)
     {
-        //
+        
     }
 }

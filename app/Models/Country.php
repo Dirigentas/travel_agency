@@ -9,6 +9,6 @@ class country extends Model
 {
     use HasFactory;
 
-    // public $timestamps = false; // jei kuriame su new (greiciausiai ejo kalba apie Lavel instaliacija) ir istrinam timestamps
+    public $timestamps = false; // jei kuriame su new (greiciausiai ejo kalba apie Laravel instaliacija) ir istrinam migration timestamps
 
 }

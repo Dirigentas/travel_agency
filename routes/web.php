@@ -21,12 +21,11 @@ Route::get('/', function () {
 
 Route::prefix('/countries')->name('countries-')->group(function () {
     Route::get('/index', [C::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
-    // Route::get('/index', [H::class, 'index'])->name('index'); //->middleware('roles:Ad|Ma');    
     Route::get('/create', [C::class, 'create'])->name('create'); //->middleware('roles:Ad');
     Route::post('/store', [C::class, 'store'])->name('store'); //->middleware('roles:Ad');    
-    Route::get('/edit/{client}', [C::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
-    Route::put('/update/{client}', [C::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
-    Route::delete('/destroy/{client}', [C::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
+    Route::get('/edit/{country}', [C::class, 'edit'])->name('edit'); //->middleware('roles:Ad|Ma');
+    Route::put('/update/{country}', [C::class, 'update'])->name('update'); //->middleware('roles:Ad|Ma');    
+    Route::delete('/destroy/{country}', [C::class, 'destroy'])->name('destroy'); //->middleware('roles:Ad');    
 });
 
 
