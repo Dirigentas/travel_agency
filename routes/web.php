@@ -38,6 +38,6 @@ Route::prefix('/hotels')->name('hotels-')->group(function () {
 });
 
 
-Auth::routes(['register'=> false]); //['register'=> false] - panaikina registracijos lauka
+Auth::routes(); //['register'=> false] - panaikina registracijos lauka
 
 Route::get('', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
