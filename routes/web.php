@@ -3,21 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CountryController as C;
 use App\Http\Controllers\HotelController as H;
+use App\Http\Controllers\FrontController as F;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('', [F::class, 'index'])->name('index');
+Route::get('show/{hotel}', [F::class, 'show'])->name('show');
 
 Route::prefix('/countries')->name('countries-')->group(function () {
     Route::get('/index', [C::class, 'index'])->name('index')->middleware('roles:A');    
@@ -40,4 +29,4 @@ Route::prefix('/hotels')->name('hotels-')->group(function () {
 
 Auth::routes(); //['register'=> false] - panaikina registracijos lauka
 
-Route::get('', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
