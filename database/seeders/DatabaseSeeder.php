@@ -26,11 +26,23 @@ class DatabaseSeeder extends Seeder
             'role' => 'administratorius'
         ]);
 
-        foreach (range(0, 10) as $value) {
+        $countries = ['Abchazija', 'Afganistanas', 'Lietuva', 'JAV', 'Anglija', 'Graikija', 'Italija', 'Ispanija', 'Vokietija', 'Australija', 'Japonija'];
+
+        foreach ($countries as $key => $value) {
         DB::table('countries')->insert([
-                'name' => $faker->countryCode ,
+                'name' => $countries[$key],
                 'season_start' => $faker->dateTimeBetween('-4 week', '+4 week'),
                 'season_end' => $faker->dateTimeBetween('+5 week', '+40 week'),
+            ]);
+        }
+
+        foreach (range(0, 100) as $value) {
+        DB::table('hotels')->insert([
+                'name' => $faker->name,
+                'price' => rand(1, 100) * 10,
+                'trip_length' => rand(1, 21),
+                'country' => $countries[rand(0, 10)],
+                'photo' => $faker->imageUrl(360, 150, 'Trip photo'),
             ]);
         }
     }

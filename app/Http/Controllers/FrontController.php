@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Front;
 use App\Models\Hotel;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -13,9 +14,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Hotel $hotels)
+    public function index(Hotel $hotels, Request $request)
     {
-        $hotels =$hotels->get();
+         $hotels =$hotels->get();
 
         return view('front.home', [
             'hotels' => $hotels
@@ -88,5 +89,14 @@ class FrontController extends Controller
     public function destroy(Front $front)
     {
         //
+    }
+
+    public function showCatHotels($country)
+    {
+        $hotels = Hotel::where('country', $country)->get();
+
+        return view('front.home', [
+            'hotels' => $hotels
+        ]);
     }
 }

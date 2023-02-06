@@ -4,9 +4,9 @@
 
 @section('content')
 
-<div class='container text-center'>
+<div class='container text-center row'>
     <div class='col-3'>
-
+        @include('front.categories')
     </div>
     <div class='col-9'>
         <div class="card">

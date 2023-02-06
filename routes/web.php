@@ -6,6 +6,7 @@ use App\Http\Controllers\HotelController as H;
 use App\Http\Controllers\FrontController as F;
 
 Route::get('', [F::class, 'index'])->name('index');
+Route::get('/cat/{country}', [F::class, 'showCatHotels'])->name('show-cats-hotels');
 Route::get('show/{hotel}', [F::class, 'show'])->name('show');
 
 Route::prefix('/countries')->name('countries-')->group(function () {
