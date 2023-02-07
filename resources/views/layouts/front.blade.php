@@ -26,10 +26,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-
-
-
                         <!-- Authentication Links -->
+                        </li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -44,7 +42,13 @@
                         @endif
 
                         @else
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg>
+                                    <use xlink:href="#cart"></use>
+                                </svg>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Šalys</a>
                             <ul class="dropdown-menu">
@@ -86,5 +90,6 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.svg')
 </body>
 </html>
