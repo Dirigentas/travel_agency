@@ -27,44 +27,25 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        </li>
                         @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('index') }}">Pagrindinis</a>
+                        </li>
+
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Prisijungti') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registruotis') }}</a>
                         </li>
                         @endif
 
                         @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg>
-                                    <use xlink:href="#cart"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Šalys</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('countries-index') }}">Šalių sąrašas</a></li>
-                                <li><a class="dropdown-item" href="{{ route('countries-create') }}">Pridėti šalį</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Viešbučiai</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('hotels-index') }}">Viešbučių sąrašas</a></li>
-                                <li><a class="dropdown-item" href="{{ route('hotels-create') }}">Pridėti viešbutį</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown mt-2">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -72,13 +53,26 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    Atsijungti
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="cartDropdown" class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="cart-svg">
+                                    <svg>
+                                        <use xlink:href="#cart"></use>
+                                    </svg>
+                                    {{-- <span class="count">{{$cart->count}}</span>
+                                    <span>{{$cart->total}} eur </span> --}}
+                                    <span class="count">5</span>
+                                    <span>1000 eur </span>
+                                </div>
+                            </a>
                         </li>
                         @endguest
                     </ul>
