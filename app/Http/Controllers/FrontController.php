@@ -16,12 +16,6 @@ class FrontController extends Controller
      */
     public function index(Hotel $hotels, Request $request)
     {
-        // $hotels = match($request->sort ?? '') {
-        //     'asc_price' => $hotels->orderBy('price'),
-        //     'desc_price' => $hotels->orderBy('price', 'desc'),
-        //     default => $hotels
-        // }; //tik uzklausos formavimas
-
         if ($request->s)
         {
             $s = explode(' ', $request->s);
@@ -34,7 +28,15 @@ class FrontController extends Controller
             else {
                 $hotels = Hotel::where('name', 'like', '%'.$s[0].'%'.$s[1].'%')->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%');
             }
+        } else {
+            $hotels = Hotel::where('id', '>', 0);
         }
+
+        $hotels = match($request->sort ?? '') {
+            'asc_price' => $hotels->orderBy('price'),
+            'desc_price' => $hotels->orderBy('price', 'desc'),
+            default => $hotels
+        };
         
          $hotels =$hotels->get(); //duomenu gavimas
 
@@ -114,12 +116,37 @@ class FrontController extends Controller
         //
     }
 
-    public function showCatHotels($country)
+    public function showCatHotels($country, Request $request)
     {
-        $hotels = Hotel::where('country', $country)->get();
+        $hotels = Hotel::where('country', $country);
+
+        if ($request->s)
+        {
+            $s = explode(' ', $request->s);
+            
+            //vieno zodzio paieska
+            if(count($s) == 1) {
+                $hotels = $hotels->where('name', 'like', '%'.$s[0].'%');
+            }
+            //dvieju zodziu paieska
+            else {
+                $hotels = $hotels->where('name', 'like', '%'.$s[0].'%'.$s[1].'%')->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%');
+            }
+        }
+
+        $hotels = match($request->sort ?? '') {
+            'asc_price' => $hotels->orderBy('price'),
+            'desc_price' => $hotels->orderBy('price', 'desc'),
+            default => $hotels
+        };
+
+        $hotels =$hotels->get(); 
 
         return view('front.home', [
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            's' => $request->s ?? '',
+            'sortSelect' => Hotel::SORT,
+            'sortShow' => isset(Hotel::SORT[$request->sort]) ? $request->sort : '',
         ]);
     }
 }

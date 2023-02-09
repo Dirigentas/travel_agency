@@ -12,9 +12,9 @@
         <div class="card">
             <div class='card-header'>
                 <h3 class='mb-3'>Išsirink svajonių kelionę</h3>
-                <form class='row' action="{{route('index')}}" method='get'>
+                <form class='row' @if(explode('/', $_SERVER['REQUEST_URI'])[1]=='cat' ) action="{{route('show-cats-hotels', explode('/', $_SERVER['REQUEST_URI'])[2])}}" @else action="{{route('index')}}" @endif method='get'>
                     <div class='col-4'>
-                        <input id="search" name='s' type="text" class="form-control" placeholder="Ieškoti pagal pavadinimą" value="{{$s}}">
+                        <input name='s' type="text" class="form-control" placeholder="Ieškoti pagal pavadinimą" value="{{$s}}">
                     </div>
                     <div class='col-4'>
                         <select class="form-select" name='sort'>
