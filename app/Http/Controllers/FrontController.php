@@ -16,10 +16,33 @@ class FrontController extends Controller
      */
     public function index(Hotel $hotels, Request $request)
     {
-         $hotels =$hotels->get();
+        // $hotels = match($request->sort ?? '') {
+        //     'asc_price' => $hotels->orderBy('price'),
+        //     'desc_price' => $hotels->orderBy('price', 'desc'),
+        //     default => $hotels
+        // }; //tik uzklausos formavimas
+
+        if ($request->s)
+        {
+            $s = explode(' ', $request->s);
+            
+            //vieno zodzio paieska
+            if(count($s) == 1) {
+                $hotels = Hotel::where('name', 'like', '%'.$s[0].'%');
+            }
+            //dvieju zodziu paieska
+            else {
+                $hotels = Hotel::where('name', 'like', '%'.$s[0].'%'.$s[1].'%')->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%');
+            }
+        }
+        
+         $hotels =$hotels->get(); //duomenu gavimas
 
         return view('front.home', [
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            'sortSelect' => Hotel::SORT,
+            'sortShow' => isset(Hotel::SORT[$request->sort]) ? $request->sort : '',
+            's' => $request->s ?? '',
         ]);
     }
 

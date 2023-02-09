@@ -10,17 +10,23 @@
     </div>
     <div class='col-9'>
         <div class="card">
-            <div class='card-header row'>
-                <div class='col-6'>
-                    <input type="text" class="form-control" placeholder="Ieškoti pagal pavadinimą">
-                </div>
-                <div class='col-6'>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Rūšiuoti</option>
-                        <option value="low">Kaina nuo žemiausios</option>
-                        <option value="high">Kaina nuo auksčiausios</option>
-                    </select>
-                </div>
+            <div class='card-header'>
+                <h3 class='mb-3'>Išsirink svajonių kelionę</h3>
+                <form class='row' action="{{route('index')}}" method='get'>
+                    <div class='col-4'>
+                        <input id="search" name='s' type="text" class="form-control" placeholder="Ieškoti pagal pavadinimą" value="{{$s}}">
+                    </div>
+                    <div class='col-4'>
+                        <select class="form-select" name='sort'>
+                            <option selected>Rūšiuoti</option>
+                            @foreach($sortSelect as $index => $value)
+                            <option value="{{$index}}" @if($sortShow==$index) selected @endif>{{$value}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="ms-3 col-1 btn btn-outline-primary">Rodyti</button>
+                    <a href='{{route('index')}}' class='ms-3 col-1 btn btn-outline-warning'>Išvalyti</a>
+                </form>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -37,7 +43,6 @@
             @endforeach
         </div>
     </div>
-</div>
 </div>
 
 @endsection

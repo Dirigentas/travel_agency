@@ -21,4 +21,9 @@ class Hotel extends Model
         }
     }
 
+    const SORT = [
+        'asc_price' => 'Kaina nuo žemiausios',
+        'desc_price' => 'Kaina nuo didžiausios',
+    ];
+
 }
