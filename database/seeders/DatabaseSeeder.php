@@ -42,7 +42,6 @@ class DatabaseSeeder extends Seeder
                 'price' => rand(50, 500) * 10,
                 'trip_length' => rand(1, 21),
                 'country' => $countries[rand(0, 10)],
-                // 'photo' => $faker->imageUrl(360, 150, 'Trip photo'),
             ]);
         }
     }

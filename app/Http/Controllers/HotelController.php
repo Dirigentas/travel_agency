@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+
 class HotelController extends Controller
 {
     public function __construct()
@@ -57,12 +59,12 @@ class HotelController extends Controller
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
             // Intervention library nauojimas paveiksleliu apkirpimui
-            // $manager = new ImageManager(['driver' => 'GD']);
-            // $image = $manager->make($photo);
-            // $image->crop(400, 600);
-            // $image->save(public_path().'/hotels/'.$file);
+            $manager = new ImageManager(['driver' => 'GD']);
+            $image = $manager->make($photo);
+            $image->crop(400, 200);
+            $image->save(public_path().'/hotels/'.$file);
 
-            $photo->move(public_path().'/hotels', $file); // serveryje is TEMP dir perkeliama i normalia dir. Irasom i serveri su publick_path
+            // $photo->move(public_path().'/hotels', $file); // serveryje is TEMP dir perkeliama i normalia dir. Irasom i serveri su publick_path
 
             $hotel->photo = '/hotels/'. $file; // issaugojimas i DB. O skaitom su Asset (kelias narsyklei)
         }
@@ -127,17 +129,17 @@ class HotelController extends Controller
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
             // Intervention library nauojimas paveiksleliu apkirpimui
-            // $manager = new ImageManager(['driver' => 'GD']);
-            // $image = $manager->make($photo);
-            // $image->crop(400, 600);
-            // $image->save(public_path().'/drinks/'.$file);            
+            $manager = new ImageManager(['driver' => 'GD']);
+            $image = $manager->make($photo);
+            $image->crop(400, 200);
+            $image->save(public_path().'/hotels/'.$file);            
             
             // kadangi buvo uzkelta nauja nuotrauka, senaja reikia istrinti
             if ($hotel->photo) {
                 $hotel->deletePhoto();
             }
             
-            $photo->move(public_path().'/hotels', $file);
+            // $photo->move(public_path().'/hotels', $file);
             $hotel->photo = '/hotels/'. $file; // issaugojimas i DB. O skaitom su Asset (kelias narsyklei)
         }
 

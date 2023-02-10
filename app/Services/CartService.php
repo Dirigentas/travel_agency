@@ -48,43 +48,43 @@ class CartService
         session()->put('cart', $this->cart);
     }
 
-    // public function update(array $cart)
-    // {
-    //     session()->put('cart', $cart);
-    // }
+    public function update(array $cart)
+    {
+        session()->put('cart', $cart);
+    }
 
     
-    // public function delete(int $id)
-    // {
-    //     unset($this->cart[$id]);
-    //     session()->put('cart', $this->cart);
-    // }
+    public function delete(int $id)
+    {
+        unset($this->cart[$id]);
+        session()->put('cart', $this->cart);
+    }
 
-    // public function order()
-    // {
-    //     $order = (object)[];
-    //     $order->total = $this->total;
-    //     $order->drinks = [];
+    public function order()
+    {
+        $order = (object)[];
+        $order->total = $this->total;
+        $order->drinks = [];
 
-    //     foreach ($this->cartList as $drink) {
-    //         $order->drinks[] = (object)[
-    //             'title' => $drink->title,
-    //             'count' => $drink->count,
-    //             'price' => $drink->price,
-    //             'id' => $drink->id
-    //         ];
-    //     }
+        foreach ($this->cartList as $drink) {
+            $order->drinks[] = (object)[
+                'title' => $drink->title,
+                'count' => $drink->count,
+                'price' => $drink->price,
+                'id' => $drink->id
+            ];
+        }
 
-    //     return $order;
-    // }
+        return $order;
+    }
 
-    // public function empty()
-    // {
-    //     session()->put('cart', []);
-    //     $this->total = 0;
-    //     $this->count = 0;
-    //     $this->cartList = collect();
-    //     $this->cart = [];
-    // }
+    public function empty()
+    {
+        session()->put('cart', []);
+        $this->total = 0;
+        $this->count = 0;
+        $this->cartList = collect();
+        $this->cart = [];
+    }
 
 }
