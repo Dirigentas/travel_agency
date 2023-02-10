@@ -26,4 +26,9 @@ class Hotel extends Model
         'desc_price' => 'Kaina nuo didžiausios',
     ];
 
+    public function hotelCountry()
+    {
+        return $this->belongsTo(Country::class, 'country', 'name');
+    }
+
 }

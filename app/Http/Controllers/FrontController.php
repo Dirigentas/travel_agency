@@ -113,7 +113,8 @@ class FrontController extends Controller
     public function cart(CartService $cart)
     {
         return view('front.cart', [
-            'cartList' => $cart->list
+            'cartList' => $cart->list,
+            'country' => 'no'
         ]);
     }
 

@@ -76,9 +76,18 @@
                                     </svg>
                                     <span class="count">{{$cart->count}}</span>
                                     <span>{{$cart->total}} eur </span>
-                                    {{-- <span class="count">5</span>
-                                    <span>1000 eur </span> --}}
                                 </div>
+                            </a>
+                            <a href="{{route('cart')}}" class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                                @forelse($cart->list as $hotel)
+                                <div class="dropdown-item">
+                                    {{$hotel->name}}
+                                    <b>X</b> {{$hotel->count}} vnt.
+                                    {{$hotel->sum}} eur
+                                </div>
+                                @empty
+                                <span class="dropdown-item">Empty</span>
+                                @endforelse
                             </a>
                         </li>
                         @endguest
