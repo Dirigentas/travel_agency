@@ -58,6 +58,13 @@
                         </li>
 
                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rezervacijos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('orders-index') }}">Rezervacijų sąrašas</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>

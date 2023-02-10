@@ -25,6 +25,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
             'role' => 'administratorius'
         ]);
+        DB::table('users')->insert([
+            'name' => 'Marius',
+            'email' => 'a@a',
+            'password' => Hash::make('12345678'),
+        ]);
 
         $countries = ['Abchazija', 'Afganistanas', 'Lietuva', 'JAV', 'Anglija', 'Graikija', 'Italija', 'Ispanija', 'Vokietija', 'Australija', 'Japonija'];
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Front;
 use App\Models\Hotel;
 use App\Models\Country;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ class FrontController extends Controller
             default => $hotels
         };
         
-         $hotels =$hotels->get(); //duomenu gavimas
+         $hotels = $hotels->get(); //duomenu gavimas
 
         return view('front.home', [
             'hotels' => $hotels,
@@ -142,6 +143,6 @@ class FrontController extends Controller
 
         $cart->empty();
 
-        return redirect()->route('start');
+        return redirect()->route('index');
     }
 }
