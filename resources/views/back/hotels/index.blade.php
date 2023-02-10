@@ -14,7 +14,7 @@
             <li class="list-group-item d-flex">
                 <div class='fw-bold col'> {{$value->name}}</div>
                 <div class='col'> {{$value->country}}</div>
-                <div class='col'> {{$value->price}} Eur/naktį</div>
+                <div class='col'> {{$value->price}} Eur</div>
                 <div class='col'> {{$value->trip_length}} nakvynė(-s)(-ių)</div>
                 <div class='col-1'> <img class='col-6 img-fluid img-thumbnail' src='{{asset($value->photo)}}'></div>
                 <div class='col'>

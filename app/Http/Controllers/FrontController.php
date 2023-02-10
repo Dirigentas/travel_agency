@@ -6,6 +6,7 @@ use App\Models\Front;
 use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Services\CartService;
 
 class FrontController extends Controller
 {
@@ -49,27 +50,6 @@ class FrontController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Front  $front
@@ -80,40 +60,6 @@ class FrontController extends Controller
         return view('front.hotel', [
             'hotel' => $hotel
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Front $front)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\Request  $request
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Front $front)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Front $front)
-    {
-        //
     }
 
     public function showCatHotels($country, Request $request)
@@ -147,6 +93,50 @@ class FrontController extends Controller
             's' => $request->s ?? '',
             'sortSelect' => Hotel::SORT,
             'sortShow' => isset(Hotel::SORT[$request->sort]) ? $request->sort : '',
+            'country' => $country,
         ]);
     }
+
+    public function addToCart(Request $request, CartService $cart)
+    {
+        $id = (int) $request->hotel;
+        $count = (int) $request->count;
+        $cart->add($id, $count);
+
+        return redirect()->back();
+    }
+
+    // public function cart(CartService $cart)
+    // {
+    //     return view('front.cart', [
+    //         'cartList' => $cart->list
+    //     ]);
+    // }
+
+    // public function updateCart(Request $request, CartService $cart)
+    // {
+       
+    //     if ($request->delete) {
+    //         $cart->delete($request->delete);
+    //     } else {
+    //     $updatedCart = array_combine($request->ids ?? [], $request->count ?? []);
+    //     $cart->update($updatedCart);
+    //     }
+    //     return redirect()->back();
+    // }
+
+    // public function makeOrder(CartService $cart)
+    // {
+    //     $order = new Order;
+
+    //     $order->user_id = Auth::user()->id;
+
+    //     $order->order_json = json_encode($cart->order());
+
+    //     $order->save();
+
+    //     $cart->empty();
+
+    //     return redirect()->route('start');
+    // }
 }

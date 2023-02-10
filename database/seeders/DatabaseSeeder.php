@@ -39,10 +39,10 @@ class DatabaseSeeder extends Seeder
         foreach (range(0, 100) as $value) {
         DB::table('hotels')->insert([
                 'name' => $faker->name,
-                'price' => rand(1, 100) * 10,
+                'price' => rand(50, 500) * 10,
                 'trip_length' => rand(1, 21),
                 'country' => $countries[rand(0, 10)],
-                'photo' => $faker->imageUrl(360, 150, 'Trip photo'),
+                // 'photo' => $faker->imageUrl(360, 150, 'Trip photo'),
             ]);
         }
     }

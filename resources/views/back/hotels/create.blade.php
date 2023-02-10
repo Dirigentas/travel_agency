@@ -22,7 +22,7 @@
             <input class="form-control form-control-lg mb-4" type="text" name="name">
             <div class='row'>
                 <div class='col'>
-                    <label class="form-label">Kaina už nakvynę</label>
+                    <label class="form-label">Kelionės kaina</label>
                     <input class="form-control form-control-lg mb-4" type="number" name="price">
                 </div>
                 <div class='col'>

@@ -1,3 +1,5 @@
+@inject('cart', 'App\Services\CartService')
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -72,10 +74,10 @@
                                     <svg>
                                         <use xlink:href="#cart"></use>
                                     </svg>
-                                    {{-- <span class="count">{{$cart->count}}</span>
-                                    <span>{{$cart->total}} eur </span> --}}
-                                    <span class="count">5</span>
-                                    <span>1000 eur </span>
+                                    <span class="count">{{$cart->count}}</span>
+                                    <span>{{$cart->total}} eur </span>
+                                    {{-- <span class="count">5</span>
+                                    <span>1000 eur </span> --}}
                                 </div>
                             </a>
                         </li>

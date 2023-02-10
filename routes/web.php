@@ -8,6 +8,10 @@ use App\Http\Controllers\FrontController as F;
 Route::get('', [F::class, 'index'])->name('index');
 Route::get('/cat/{country}', [F::class, 'showCatHotels'])->name('show-cats-hotels');
 Route::get('show/{hotel}', [F::class, 'show'])->name('show');
+Route::post('add', [F::class, 'addToCart'])->name('add-to-cart');
+Route::get('/cart', [F::class, 'cart'])->name('cart');
+Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
+Route::post('/make-order', [F::class, 'makeOrder'])->name('make-order');
 
 Route::prefix('/countries')->name('countries-')->group(function () {
     Route::get('/index', [C::class, 'index'])->name('index')->middleware('roles:A');    

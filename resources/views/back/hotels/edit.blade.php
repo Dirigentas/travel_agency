@@ -26,7 +26,7 @@
             </div>
             <div class='row'>
                 <div class='col'>
-                    <label for="exampleInputEmail1" class="form-label">Kaina už nakvynę</label>
+                    <label for="exampleInputEmail1" class="form-label">Kelionės kaina</label>
                     <input class="form-control form-control-lg mb-4" type="number" name="price" value='{{$hotel->price}}'>
                 </div>
                 <div class='col'>

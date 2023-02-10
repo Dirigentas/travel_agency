@@ -12,7 +12,7 @@
         <div class="card">
             <div class='card-header'>
                 <h3 class='mb-3'>Išsirink svajonių kelionę</h3>
-                <form class='row' @if(explode('/', $_SERVER['REQUEST_URI'])[1]=='cat' ) action="{{route('show-cats-hotels', explode('/', $_SERVER['REQUEST_URI'])[2])}}" @else action="{{route('index')}}" @endif method='get'>
+                <form class='row' @if(isset($country)) action="{{route('show-cats-hotels', $country)}}" @else action="{{route('index')}}" @endif method='get'>
                     <div class='col-4'>
                         <input name='s' type="text" class="form-control" placeholder="Ieškoti pagal pavadinimą" value="{{$s}}">
                     </div>
@@ -33,10 +33,14 @@
             @foreach($hotels as $value)
             <div class="col-6 mt-5">
                 <a href='{{route('show', $value)}}' class="btn btn-outline-primary">
+                    @if($value->photo)
                     <img class='img-fluid img-thumbnail' src='{{asset($value->photo)}}'>
+                    @else
+                    <img class='img-fluid img-thumbnail' src='{{asset('no.jpg')}}'>
+                    @endif
                     <div> {{$value->country}}</div>
                     <div class='fw-bold col'> {{$value->name}}</div>
-                    <div> {{$value->price}} Eur/naktį</div>
+                    <div> {{$value->price}} Eur</div>
                     <div> {{$value->trip_length}} nakvynė(-s)(-ių)</div>
                 </a>
             </div>

@@ -182,6 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\CategoriesServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
 
         /*
          * Package Service Providers...
