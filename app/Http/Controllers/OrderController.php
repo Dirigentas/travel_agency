@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -15,15 +15,31 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all()
-        ->map(function($hotel) {
-            $hotel->drinks = json_decode($hotel->order_json);
-            return $hotel;
-        });
+        $user_id = Auth::user()->id;
+        $user_role = Auth::user()->role;
 
-        return view('back.orders.index', [
-            'orders' => $orders,
-        ]);
+        if ($user_role == 'administratorius')
+        {
+            $orders = Order::all()
+            ->map(function($order) {
+                $order->hotels = json_decode($order->order_json);
+                return $order;
+            });
+            return view('back.orders.index', [
+                'orders' => $orders,
+            ]);
+            
+        } else {
+            $orders = Order::where('user_id', $user_id)->get()
+            ->map(function($order) {
+                $order->hotels = json_decode($order->order_json);
+                return $order;
+            });
+            return view('front.orders', [
+                'orders' => $orders,
+                'country' => 'no'
+            ]);
+        }
     }
 
     /**
@@ -39,10 +55,10 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -72,11 +88,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -92,3 +108,15 @@ class OrderController extends Controller
         //
     }
 }
+
+// <select wire:model="bank" name="bank" class="form-select">
+//     @foreach($banks as $bank)
+//     <option value="'{{$bank->name}}'">{{$bank->name}}</option>
+//     @endforeach
+// </select>
+
+// <select wire:model="bank" name="bank" class="form-select">
+//     @foreach($banks as $bankModel)
+//         <option value="{{$bankModel->name}}">{{$bankModel->name}}</option>
+//     @endforeach
+// </select>

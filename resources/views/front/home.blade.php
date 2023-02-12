@@ -40,7 +40,7 @@
                     @endif
                     <div> {{$value->country}}</div>
                     <div class='fw-bold col'> {{$value->name}}</div>
-                    <div> {{$value->price}} Eur</div>
+                    <div> {{round($value->price, 0)}} Eur</div>
                     <div> {{$value->trip_length}} nakvynė(-s)(-ių)</div>
                 </a>
             </div>

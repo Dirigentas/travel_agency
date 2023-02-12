@@ -52,6 +52,10 @@
                             <a class="nav-link" href="{{ route('index') }}">Pagrindinis</a>
                         </li>
 
+                        <li class="nav-item mt-2">
+                            <a class="nav-link" href="{{ route('orders-index') }}">Įsigyjimai</a>
+                        </li>
+
                         <li class="nav-item dropdown mt-2">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
