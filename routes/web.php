@@ -34,8 +34,8 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
 
 Route::prefix('orders')->name('orders-')->group(function () {
     Route::get('/index', [O::class, 'index'])->name('index')->middleware('roles:A|N');
-    Route::put('/edit/{order}', [O::class, 'update'])->name('update')->middleware('roles:A');
-    Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('roles:A');
+    Route::put('/update/{order}', [O::class, 'update'])->name('update')->middleware('roles:A');
+    Route::delete('/destroy/{order}', [O::class, 'destroy'])->name('destroy')->middleware('roles:A');
 });
 
 Auth::routes(); //['register'=> false] - panaikina registracijos lauka

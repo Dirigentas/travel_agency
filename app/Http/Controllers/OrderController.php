@@ -43,49 +43,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\Request  $request
@@ -94,7 +51,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->status = 1;
+
+        $order->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -105,18 +66,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return redirect()->back();
     }
 }
-
-// <select wire:model="bank" name="bank" class="form-select">
-//     @foreach($banks as $bank)
-//     <option value="'{{$bank->name}}'">{{$bank->name}}</option>
-//     @endforeach
-// </select>
-
-// <select wire:model="bank" name="bank" class="form-select">
-//     @foreach($banks as $bankModel)
-//         <option value="{{$bankModel->name}}">{{$bankModel->name}}</option>
-//     @endforeach
-// </select>

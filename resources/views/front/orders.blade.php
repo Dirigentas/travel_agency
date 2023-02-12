@@ -15,6 +15,7 @@
                 </h3>
                 <ul class="list-group">
                     @foreach($orders as $order)
+                    <div hidden>{{@$full_total += $order->hotels->total}}</div>
                     <li class="list-group-item d-flex">
                         <ul class="list-group col-12">
                             @foreach($order->hotels->hotels as $hotel)
@@ -28,11 +29,11 @@
                             @endforeach
                         </ul>
                     </li>
-                    <div class='text-end card-footer'>
-                        <div class='fw-bold'>Kelionių vertė: </div>
-                        <div>{{$order->hotels->total}} Eur</div>
-                    </div>
                     @endforeach
+                    <div class='text-end card-footer'>
+                        <div class='fw-bold'>Bendra kelionių vertė: </div>
+                        <div>{{$full_total}} Eur</div>
+                    </div>
                 </ul>
             </div>
         </div>

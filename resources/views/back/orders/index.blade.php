@@ -26,17 +26,19 @@
                     <div class='fw-bold'>Iš viso: </div>
                     <div>{{$order->hotels->total}} Eur</div>
                 </div>
-                <div class='col'> @if($order->status) Kelionė patvirtinta @else Laukiama patvirtinimo @endif </div>
-                <form action='' method='post' class='col'>
-                    <button type="submit" class="btn btn-outline-success">Patvirtinti</button>
-                    @method('put')
-                    @csrf
-                </form>
-                <form action='' method='post' class='col'>
+                <div class='col-2'> @if($order->status) Kelionė patvirtinta @else Laukiama patvirtinimo @endif </div>
+                <form action='{{route('orders-destroy', $order->id)}}' method='post' class='col'>
                     <button type="submit" class="btn btn-outline-danger">Ištrinti</button>
                     @method('delete')
                     @csrf
                 </form>
+                @if(!$order->status)
+                <form action='{{route('orders-update', $order->id)}}' method='post' class='col'>
+                    <button type="submit" class="btn btn-outline-success">Patvirtinti</button>
+                    @method('put')
+                    @csrf
+                </form>
+                @endif
             </li>
             @endforeach
         </ul>
