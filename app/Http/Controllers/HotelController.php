@@ -71,7 +71,7 @@ class HotelController extends Controller
         $hotel->country = $request->country;
         $hotel->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Viešbutis pridėtas sėkmingai');
     }
 
     /**
@@ -145,7 +145,7 @@ class HotelController extends Controller
         $hotel->country = $request->country;
         $hotel->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Viešbutis atnaujintas sėkmingai');
     }
 
     /**
@@ -160,6 +160,6 @@ class HotelController extends Controller
         $hotel->delete();
         
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Viešbutis ištrintas sėkmingai');
     }
 }

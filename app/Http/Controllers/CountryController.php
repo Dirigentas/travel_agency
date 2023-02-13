@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 
 class countryController extends Controller
@@ -45,16 +46,16 @@ class countryController extends Controller
         $country->season_end = $request->season_end;
         $country->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Šalis pridėta sėkmingai');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\country  $country
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(country $country)
+    public function show(Country $country)
     {
         //
     }
@@ -76,7 +77,7 @@ class countryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\Request  $request
-     * @param  \App\Models\country  $country
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, country $country)
@@ -86,19 +87,22 @@ class countryController extends Controller
         $country->season_end = $request->season_end;
         $country->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Šalis atnaujinta sėkmingai');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\country  $country
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(country $country)
+    public function destroy(Country $country)   
     {
-        $country->delete();
+        // if (!$country->countryHotels()->count()) {
+            $country->delete();
+            return redirect()->back()->with('ok', 'Šalis ištrinta sėkmingai');
+        // }
 
-        return redirect()->back();
+        // return redirect()->back()->with('not', 'Šalis turi susietų viešbučių');
     }
 }

@@ -16,7 +16,11 @@
                 <div class='col'> {{$value->country}}</div>
                 <div class='col'> {{$value->price}} Eur</div>
                 <div class='col'> {{$value->trip_length}} nakvynė(-s)(-ių)</div>
+                @if($value->photo)
                 <div class='col-1'> <img class='col-6 img-fluid img-thumbnail' src='{{asset($value->photo)}}'></div>
+                @else
+                <div class='col-1'> <img class='col-6 img-fluid img-thumbnail' src='{{asset('no.jpg')}}'></div>
+                @endif
                 <div class='col'>
                     <a href='{{route('hotels-edit', $value)}}' class="btn btn-outline-primary">Redaguoti</a>
                 </div>

@@ -55,7 +55,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Rezervacija patvirtinta');
     }
 
     /**
@@ -68,6 +68,6 @@ class OrderController extends Controller
     {
         $order->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Rezervacija ištrinta sėkmingai');
     }
 }

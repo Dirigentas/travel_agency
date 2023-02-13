@@ -108,7 +108,7 @@ class FrontController extends Controller
         $count = (int) $request->count;
         $cart->add($id, $count);
 
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Kelionė pridėta į krepšelį');
     }
 
     public function cart(CartService $cart)
@@ -128,7 +128,7 @@ class FrontController extends Controller
         $updatedCart = array_combine($request->ids ?? [], $request->count ?? []);
         $cart->update($updatedCart);
         }
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Krepšelis atnaujintas sėkmingai');
     }
 
     public function makeOrder(CartService $cart)
@@ -143,6 +143,6 @@ class FrontController extends Controller
 
         $cart->empty();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('ok', 'Rezervacija atlikta');
     }
 }

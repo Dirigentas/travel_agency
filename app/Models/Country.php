@@ -11,9 +11,8 @@ class country extends Model
 
     public $timestamps = false; // jei kuriame su new (greiciausiai ejo kalba apie Laravel instaliacija) ir istrinam migration timestamps
 
-    public function typeDrinks()
+    public function countryHotels()
     {
-        return $this->hasMany(Drink::class, 'type_id', 'id');
+        return $this->hasMany(Hotel::class);
     }
-
 }

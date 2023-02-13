@@ -18,7 +18,7 @@
                     </div>
                     <div class='col-4'>
                         <select class="form-select" name='sort'>
-                            <option selected>Rūšiuoti</option>
+                            <option value='all' selected>Rūšiuoti</option>
                             @foreach($sortSelect as $index => $value)
                             <option value="{{$index}}" @if($sortShow==$index) selected @endif>{{$value}}</option>
                             @endforeach
