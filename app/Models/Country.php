@@ -13,6 +13,6 @@ class country extends Model
 
     public function countryHotels()
     {
-        return $this->hasMany(Hotel::class);
+        return $this->hasMany(Hotel::class, 'country', 'name'); // jei ne per ID jungiau lenteles, tai reikia irasyti per ka jungiau, automatiskai nepagauna
     }
 }

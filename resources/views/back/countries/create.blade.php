@@ -11,11 +11,11 @@
         </div>
         <form class="card-body" action='{{route('countries-store')}}' method='post'>
             <label for="exampleInputEmail1" class="form-label">Pavadinimas</label>
-            <input class="form-control form-control-lg mb-4" type="text" name="name">
+            <input required class="form-control form-control-lg mb-4" type="text" name="name">
             <label for="exampleInputEmail1" class="form-label">Sezono pradžios data</label>
-            <input class="form-control form-control-lg mb-4" type="date" name="season_start">
+            <input required class="form-control form-control-lg mb-4" type="date" name="season_start">
             <label for="exampleInputEmail1" class="form-label">Sezono pabaigos data</label>
-            <input class="form-control form-control-lg mb-4" type="date" name="season_end">
+            <input required class="form-control form-control-lg mb-4" type="date" name="season_end">
             <button type="submit" class="btn btn-outline-info">Sukurti</button>
             @csrf
         </form>

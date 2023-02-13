@@ -19,15 +19,15 @@
                 @endforeach
             </select>
             <label class="form-label">Pavadinimas</label>
-            <input class="form-control form-control-lg mb-4" type="text" name="name">
+            <input required class="form-control form-control-lg mb-4" type="text" name="name">
             <div class='row'>
                 <div class='col'>
                     <label class="form-label">Kelionės kaina</label>
-                    <input class="form-control form-control-lg mb-4" type="number" name="price">
+                    <input required class="form-control form-control-lg mb-4" type="number" name="price">
                 </div>
                 <div class='col'>
                     <label class="form-label">Kelionės trukmė</label>
-                    <input class="form-control form-control-lg mb-4" type="number" name="trip_length">
+                    <input required class="form-control form-control-lg mb-4" type="number" name="trip_length">
                 </div>
             </div>
             <label class="form-label">Nuotrauka</label>

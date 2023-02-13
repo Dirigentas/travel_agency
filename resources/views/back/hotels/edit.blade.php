@@ -21,17 +21,17 @@
                 </div>
                 <div class='col'>
                     <label for="exampleInputEmail1" class="form-label">Pavadinimas</label>
-                    <input class="form-control form-control-lg mb-4" type="text" name="name" value='{{$hotel->name}}'>
+                    <input required class="form-control form-control-lg mb-4" type="text" name="name" value='{{$hotel->name}}'>
                 </div>
             </div>
             <div class='row'>
                 <div class='col'>
                     <label for="exampleInputEmail1" class="form-label">Kelionės kaina</label>
-                    <input class="form-control form-control-lg mb-4" type="number" name="price" value='{{$hotel->price}}'>
+                    <input required class="form-control form-control-lg mb-4" type="number" name="price" value='{{$hotel->price}}'>
                 </div>
                 <div class='col'>
                     <label for="exampleInputEmail1" class="form-label">Kelionės trukmė</label>
-                    <input class="form-control form-control-lg mb-4" type="number" name="trip_length" value='{{$hotel->trip_length}}'>
+                    <input required class="form-control form-control-lg mb-4" type="number" name="trip_length" value='{{$hotel->trip_length}}'>
                 </div>
             </div>
             <div class='row'>

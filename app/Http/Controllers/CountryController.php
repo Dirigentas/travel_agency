@@ -98,11 +98,11 @@ class countryController extends Controller
      */
     public function destroy(Country $country)   
     {
-        // if (!$country->countryHotels()->count()) {
+        if (!$country->countryHotels()->count()) {
             $country->delete();
             return redirect()->back()->with('ok', 'Šalis ištrinta sėkmingai');
-        // }
+        }
 
-        // return redirect()->back()->with('not', 'Šalis turi susietų viešbučių');
+        return redirect()->back()->with('not', 'Šalis turi susietų viešbučių');
     }
 }
