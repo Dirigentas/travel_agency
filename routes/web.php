@@ -34,6 +34,7 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
 
 Route::prefix('orders')->name('orders-')->group(function () {
     Route::get('/index', [O::class, 'index'])->name('index')->middleware('roles:A|N');
+    Route::get('/pdf/{order}', [O::class, 'pdf'])->name('pdf')->middleware('roles:A|N');
     Route::put('/update/{order}', [O::class, 'update'])->name('update')->middleware('roles:A');
     Route::delete('/destroy/{order}', [O::class, 'destroy'])->name('destroy')->middleware('roles:A');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -69,5 +70,17 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect()->back()->with('ok', 'Rezervacija ištrinta sėkmingai');
+    }
+
+    public function pdf(Order $order)
+    {
+        
+        $order2 = Order::where('id', $order)->get();
+        
+        // dump($order2);
+        // die;
+
+        $pdf = Pdf::loadView('front.pdf', ['order' => $order2]);
+        return $pdf->download($order->id.'.pdf');
     }
 }

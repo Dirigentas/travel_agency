@@ -24,6 +24,9 @@
                                 <div class='row'>
                                     <div class='col-9 text-center'>{{round($hotel->price, 0)}} Eur X {{$hotel->count}} vnt. = {{$hotel->price * $hotel->count}} Eur</div>
                                     <div class='col text-end'> @if($order->status) Kelionė patvirtinta @else Laukiama patvirtinimo @endif </div>
+                                    <div class='col'>
+                                        <a href="{{route('orders-pdf', $order)}}" class="btn btn-outline-primary">Parsisiųsti PDF</a>
+                                    </div>
                                 </div>
                             </li>
                             @endforeach
