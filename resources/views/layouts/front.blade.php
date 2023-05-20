@@ -30,6 +30,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('index') }}">Pagrindinis</a>
                         </li>
@@ -47,6 +48,12 @@
                         @endif
 
                         @else
+
+                        @if(Auth::user()->role == 'administrator')
+                        <li class="nav-item mt-2">
+                            <a class="nav-link text-danger border border-danger" href="{{ route('countries-index') }}">Back-office</a>
+                        </li>
+                        @endif
 
                         <li class="nav-item mt-2">
                             <a class="nav-link" href="{{ route('index') }}">Pagrindinis</a>

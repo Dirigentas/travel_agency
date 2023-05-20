@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Registracija</div>
+                <div class="card-header">Registracija<span class='ms-5 text-uppercase text-danger font-weight-bold'> ADMIN role for demonstrative purposes only</span></div>
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -58,6 +59,16 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Rolė</label>
+                            <div class="col-md-6">
+                                <select required class="form-select form-select-lg mb-4" name='role'>
+                                    <option value="administrator">administratorius</option>
+                                    <option value="user">naudotojas</option>
+                                </select>
                             </div>
                         </div>
 

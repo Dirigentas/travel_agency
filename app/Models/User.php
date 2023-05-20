@@ -13,8 +13,8 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
         const ROLES = [
-        'A' => 'administratorius',
-        'N' => 'naudotojas'
+        'A' => 'administrator',
+        'U' => 'user'
     ];
 
     /**
@@ -26,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**

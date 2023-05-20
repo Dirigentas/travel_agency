@@ -14,6 +14,7 @@
                     Įsigytos kelionės
                 </h3>
                 <ul class="list-group">
+                    @if(count($orders))
                     @foreach($orders as $order)
                     <div hidden>{{@$full_total += $order->hotels->total}}</div>
                     <li class="list-group-item d-flex">
@@ -33,6 +34,9 @@
                         </ul>
                     </li>
                     @endforeach
+                    @else
+                    <div hidden>{{$full_total = 0}}</div>
+                    @endif
                     <div class='text-end card-footer'>
                         <div class='fw-bold'>Bendra kelionių vertė: </div>
                         <div>{{$full_total}} Eur</div>

@@ -23,15 +23,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Aras',
             'email' => 'admin.@gmail.com',
             'password' => Hash::make('123'),
-            'role' => 'administratorius'
+            'role' => 'administrator'
         ]);
         DB::table('users')->insert([
             'name' => 'Marius',
             'email' => 'a@a',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('123'),
+            'role' => 'user'
         ]);
 
-        $countries = ['Abchazija', 'Afganistanas', 'Lietuva', 'JAV', 'Anglija', 'Graikija', 'Italija', 'Ispanija', 'Vokietija', 'Australija', 'Japonija'];
+        $countries = ['Airija', 'Kanada', 'Lietuva', 'JAV', 'Anglija', 'Graikija', 'Italija', 'Ispanija', 'Vokietija', 'Australija', 'Japonija'];
 
         foreach ($countries as $key => $value) {
         DB::table('countries')->insert([

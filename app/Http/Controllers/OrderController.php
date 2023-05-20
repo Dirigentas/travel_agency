@@ -19,7 +19,7 @@ class OrderController extends Controller
         $user_id = Auth::user()->id;
         $user_role = Auth::user()->role;
 
-        if ($user_role == 'administratorius')
+        if ($user_role == 'administrator')
         {
             $orders = Order::all()
             ->map(function($order) {
