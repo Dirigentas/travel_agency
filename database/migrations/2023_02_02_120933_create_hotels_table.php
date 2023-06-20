@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('trip_length')->unsigned();
             $table->string('country', 30);
             $table->foreign('country')->references('name')->on('countries');
-
         });
     }
 
